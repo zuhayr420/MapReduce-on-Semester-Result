@@ -11,7 +11,9 @@ Filters valid student records using registration numbers
 Finds and extracts the final grades
 Generates intermediate key-value pairs (Mapping)
 Calculates the aggregated count of each grade (Reducing)
-Dataset: The project uses text files containing end-semester examination results with details like registration numbers, internal marks, university marks, totals, and final grades.  
+ 
+# Dataset: 
+The project uses text files containing end-semester examination results with details like registration numbers, internal marks, university marks, totals, and final grades.  
 
 # How to Run:
 * Clone the repository
