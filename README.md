@@ -4,6 +4,7 @@ This project implements a MapReduce pipeline on university examination data usin
 # Technologies used:
 - Python
 - Map Reduce
+- bash/Unix shell
 
 # Features:
 Reads unstructured examination text files
