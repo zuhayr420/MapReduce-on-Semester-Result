@@ -1,21 +1,24 @@
-This repository contains a MapReduce pipeline written in Python that analyzes university grade sheets.The project processes multiple text files containing end-semester examination results and aggregates the total number of students in each valid grade category (S, A, B, C, D, E, and F).
-The implementation uses standard standard input/output streams (⁠sys.stdin⁠ and ⁠sys.stdout⁠),making it compatible with Hadoop Streaming or local terminal execution.
+## Description
+This project implements a MapReduce pipeline using Python to parse, process, and analyze end-semester examination grade sheets. It reads through multiple unstructured or semi-structured text files containing student records, extracts the final grades, and aggregates the total count for each valid grade category (S, A, B, C, D, E, and F). The project is designed to simulate a distributed data processing environment and can be run locally using Unix pipes or deployed to a Hadoop cluster via Hadoop Streaming.
 
-Prerequisites:
- Python 3.x:Required to run the mapper and reducer scripts.
- Unix-like Environment:A Linux, macOS, or WSL (Windows Subsystem for Linux)terminal to execute the shell script and pipe commands.
+## Technologies Used
+* **Python 3:** Core programming language used for the Mapper and Reducer logic.
+* **Bash / Unix Shell:** Used for scripting the local execution pipeline (`cat`, `sort`, `|`).
+* **MapReduce Paradigm:** The underlying distributed computing framework concept used for mapping data pairs and reducing them into aggregated results.
+* **Hadoop Streaming (Optional):** The scripts are fully compatible with Hadoop for distributed processing on large clusters.
 
-Input Data Format:
-The pipeline expects unstructured or semi-structured text files where student records are represented line-by-line.The mapper is designed to handle variable whitespace and tabs, automatically filtering out headers, footers, and statistical metadata by ensuring the row starts with a numeric Registration Number (⁠REGNO⁠).
-A Valid row will look like this:
-202400021	 35.70	   29	   65.00	B
+## Features
+* **Intelligent Data Filtering:** Automatically sanitizes input by ignoring file headers, footers, statistical metadata, and empty lines. It isolates valid student records by validating numeric Registration Numbers (REGNO).
+* **Flexible Parsing:** Seamlessly handles inconsistent spacing, tabs, and formatting across different source files.
+* **Zero Dependencies:** Built entirely using Python's standard library (`sys`), requiring no third-party packages like `pandas` or `mrjob`.
+* **Highly Scalable:** The decoupled Mapper and Reducer architecture allows the pipeline to scale from analyzing a few megabytes of text locally to terabytes of data on a distributed cluster.
 
-Expected Output:
-The script will output a sorted list of all valid grades alongside their total occurrences across all analyzed files.
-A       134
-B       160
-C       209
-D       212
-E       64
-F       74
-S       33
+## How to Run
+
+**Step 1: Prepare the Environment**
+Ensure you have Python 3 installed on your machine and are using a Unix-like terminal (Linux, macOS, or WSL). 
+
+**Step 2: Grant Execution Permissions**
+Make the Python scripts and the bash execution script executable:
+```bash
+chmod +x src/mapper.py src/reducer.py run_job.sh
