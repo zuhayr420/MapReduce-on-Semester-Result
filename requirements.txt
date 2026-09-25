@@ -1,0 +1,2 @@
+# No external dependencies required.
+# Uses Python standard libraries (sys, subprocess).
